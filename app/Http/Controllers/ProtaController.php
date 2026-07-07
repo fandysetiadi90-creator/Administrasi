@@ -35,7 +35,11 @@ class ProtaController extends Controller
 
     public function create()
     {
-        $administrasi = AdministrasiModel::latest()->get();
+        $administrasi = AdministrasiModel::with(['mapel', 'kelas', 'periode'])
+            ->where('id_pengguna', Auth::id())
+            ->whereDoesntHave('prota')
+            ->latest()
+            ->get();
 
         return view('prota.create', compact('administrasi'));
     }
