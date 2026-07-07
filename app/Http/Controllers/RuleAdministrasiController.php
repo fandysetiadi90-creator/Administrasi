@@ -15,7 +15,7 @@ class RuleAdministrasiController extends Controller
             'PROTA',
             'PROSEM',
             'MODUL AJAR',
-            'JURNAL HARIAN'
+            'JURNAL MENGAJAR'
         ];
 
         foreach ($komponen as $item) {
