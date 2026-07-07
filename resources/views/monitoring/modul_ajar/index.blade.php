@@ -6,9 +6,6 @@
 
 <div class="container-fluid">
 
-    {{-- ================================= --}}
-    {{-- SUMMARY CARD --}}
-    {{-- ================================= --}}
     <div class="row">
 
         <div class="col-lg-4 col-6">
@@ -113,7 +110,7 @@
                             @endif
                         </td>
 
-\                        <td>
+                        <td>
                             <a href="{{ route('monitoring.modul-ajar.show', $m->id_modul_ajar) }}"
                                class="btn btn-sm btn-info">
                                 <i class="fas fa-eye"></i>
