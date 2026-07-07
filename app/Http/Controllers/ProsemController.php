@@ -9,8 +9,8 @@ use App\Models\ProsemModel;
 use App\Models\ProtaDetailModel;
 use App\Models\ProtaModel;
 use Barryvdh\DomPDF\Facade\Pdf;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProsemController extends Controller
@@ -18,15 +18,14 @@ class ProsemController extends Controller
     public function index()
     {
         $prosem = ProsemModel::with('prota')
+            ->whereHas('prota.administrasi', function ($query) {
+                $query->where('id_pengguna', Auth::id());
+            })
             ->latest()
             ->get();
 
-        return view(
-            'prosem.index',
-            compact('prosem')
-        );
+        return view('prosem.index', compact('prosem'));
     }
-
     public function create()
     {
 
