@@ -27,7 +27,7 @@ class CpController extends Controller
             'detail.atpDetail'
         ])
         ->whereHas('administrasi', function ($query) {
-            $query->where('pengguna_id', Auth::id());
+            $query->where('id_pengguna', Auth::id());
         })
         ->latest()
         ->get();
