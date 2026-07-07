@@ -45,7 +45,9 @@ class JurnalHarianController extends Controller
      */
     public function create()
     {
-         $administrasi = AdministrasiModel::with('mapel')->get();
+        $administrasi = AdministrasiModel::with('mapel')
+            ->where('id_pengguna', Auth::id())
+            ->get();
 
         return view('jurnal_harian.create', compact('administrasi'));
     }
