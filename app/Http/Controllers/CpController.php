@@ -25,7 +25,12 @@ class CpController extends Controller
             'administrasi.mapel',
             'administrasi.periode',
             'detail.atpDetail'
-        ])->latest()->get();
+        ])
+        ->whereHas('administrasi', function ($query) {
+            $query->where('pengguna_id', Auth::id());
+        })
+        ->latest()
+        ->get();
 
         return view('cp.index', compact('cp'));
     }
