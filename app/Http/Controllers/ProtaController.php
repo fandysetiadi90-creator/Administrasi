@@ -5,14 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\AdministrasiModel;
 use App\Models\AtpDetailModel;
 use App\Models\PenggunaModel;
-use App\Models\Prota;
-use App\Models\ProtaDetail;
 use App\Models\ProtaDetailModel;
 use App\Models\ProtaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ProtaController extends Controller
 {
@@ -22,6 +21,9 @@ class ProtaController extends Controller
         $prota = ProtaModel::with([
             'administrasi'
         ])
+        ->whereHas('administrasi', function ($query) {
+            $query->where('id_pengguna', Auth::id());
+        })
             ->latest()
             ->get();
 
