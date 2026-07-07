@@ -28,12 +28,16 @@ class ProsemController extends Controller
     }
     public function create()
     {
-
         $prota = ProtaModel::with([
-            'administrasi.mapel',
-            'administrasi.kelas',
-            'administrasi.periode'
-        ])->get();
+                'administrasi.mapel',
+                'administrasi.kelas',
+                'administrasi.periode'
+            ])
+            ->whereHas('administrasi', function ($query) {
+                $query->where('id_pengguna', Auth::id());
+            })
+            ->latest()
+            ->get();
 
         $semesterTerpakai = ProsemModel::select(
             'id_prota',
