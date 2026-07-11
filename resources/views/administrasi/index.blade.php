@@ -14,6 +14,14 @@
                 Monitoring Administrasi Kurikulum
             </h3>
 
+            <a href="{{ route('administrasi.pdf') }}"
+                class="btn btn-danger mb-3 float-right">
+
+                <i class="fas fa-file-pdf"></i>
+
+                Unduh PDF
+
+            </a>
         </div>
 
         <div class="card-body">

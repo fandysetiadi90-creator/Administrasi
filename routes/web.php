@@ -38,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/siswa', SiswaController::class);
     Route::resource('/mapel', MapelController::class);
     Route::resource('/periode', PeriodeController::class);
-    Route::resource('/administrasi', AdministrasiController::class);
+    Route::get('/administrasi', [AdministrasiController::class, 'index'])->name('administrasi.index');
+    Route::get('/administrasi/pdf',[AdministrasiController::class,'downloadPdf'])->name('administrasi.pdf');
 
     Route::resource('/cp', CpController::class);
     Route::get('/monitoring/cp', [MonitoringController::class, 'index'])->name('monitoring.cp');
@@ -83,7 +84,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/rule-administrasi/update',[RuleAdministrasiController::class, 'update'])->name('rule-administrasi.update');
 
     Route::get('/monitoring-kelengkapan',[MonitoringKelengkapanController::class, 'index'])->name('monitoring.kelengkapan');
-
+    Route::get('/monitoring-kelengkapan/pdf',[MonitoringKelengkapanController::class, 'downloadPdf'])->name('monitoring-kelengkapan.pdf');
+    
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

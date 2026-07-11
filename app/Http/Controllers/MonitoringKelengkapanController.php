@@ -10,10 +10,35 @@ use App\Models\ProtaModel;
 use App\Models\ProsemModel;
 use App\Models\ModulAjarModel;
 use App\Models\JurnalHarianModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class MonitoringKelengkapanController extends Controller
 {
    public function index()
+    {
+        $hasil = $this->prosesMonitoring();
+
+        return view(
+            'monitoring-kelengkapan.index',
+            compact('hasil')
+        );
+    }
+
+    public function downloadPdf()
+    {
+        $hasil = $this->prosesMonitoring();
+
+        $pdf = Pdf::loadView(
+            'monitoring-kelengkapan.pdf',
+            compact('hasil')
+        );
+
+        $pdf->setPaper('A4', 'landscape');
+
+        return $pdf->download('Laporan Monitoring Kelengkapan Administrasi.pdf');
+    }
+
+    private function prosesMonitoring()
     {
         $administrasi = AdministrasiModel::with([
             'pengguna',
@@ -33,17 +58,14 @@ class MonitoringKelengkapanController extends Controller
 
             $fakta = [];
 
-            // F1 = CP
             $fakta['CP'] = CpModel::where(
                 'id_administrasi',
                 $adm->id_administrasi
             )->exists();
 
-            // F2 = ATP
             $fakta['ATP'] = AtpDetailModel::whereHas(
                 'cpDetail.cp',
                 function ($q) use ($adm) {
-
                     $q->where(
                         'id_administrasi',
                         $adm->id_administrasi
@@ -51,17 +73,14 @@ class MonitoringKelengkapanController extends Controller
                 }
             )->exists();
 
-            // F3 = PROTA
             $fakta['PROTA'] = ProtaModel::where(
                 'id_administrasi',
                 $adm->id_administrasi
             )->exists();
 
-            // F4 = PROSEM
             $fakta['PROSEM'] = ProsemModel::whereHas(
                 'prota',
                 function ($q) use ($adm) {
-
                     $q->where(
                         'id_administrasi',
                         $adm->id_administrasi
@@ -69,80 +88,55 @@ class MonitoringKelengkapanController extends Controller
                 }
             )->exists();
 
-            // F5 = MODUL AJAR
             $fakta['MODUL AJAR'] = ModulAjarModel::where(
                 'id_administrasi',
                 $adm->id_administrasi
             )->exists();
 
-            // F6 = JURNAL HARIAN
             $fakta['JURNAL HARIAN'] = JurnalHarianModel::where(
                 'id_administrasi',
                 $adm->id_administrasi
             )->exists();
-
-          
 
             $belumLengkap = [];
 
             foreach ($rules as $rule) {
 
                 if (
-                    $rule->status == 'Wajib'
-                    &&
-                    (
-                        !isset($fakta[$rule->komponen])
-                        ||
-                        $fakta[$rule->komponen] == false
-                    )
+                    !isset($fakta[$rule->komponen]) ||
+                    !$fakta[$rule->komponen]
                 ) {
 
-                    $belumLengkap[] =
-                        $rule->komponen;
+                    $belumLengkap[] = $rule->komponen;
                 }
             }
 
-            
+            $jumlahWajib = $rules->count();
 
-            if (count($belumLengkap) == 0) {
+            $jumlahTerpenuhi = $jumlahWajib - count($belumLengkap);
 
-                $status = 'Lengkap';
-
-            } else {
-
-                $status = 'Tidak Lengkap';
-            }
+            $persentase = $jumlahWajib > 0
+                ? round(($jumlahTerpenuhi / $jumlahWajib) * 100, 2)
+                : 0;
 
             $hasil[] = [
 
                 'administrasi' => $adm,
 
-                'status' => $status,
+                'status' => count($belumLengkap) == 0
+                    ? 'Lengkap'
+                    : 'Tidak Lengkap',
 
                 'belum_lengkap' => $belumLengkap,
 
-                'jumlah_wajib' => $rules->count(),
+                'jumlah_wajib' => $jumlahWajib,
 
-                'jumlah_terpenuhi' =>
-                    $rules->count() - count($belumLengkap),
+                'jumlah_terpenuhi' => $jumlahTerpenuhi,
 
-                'persentase' =>
-                    $rules->count() > 0
-                    ? round(
-                        (
-                            ($rules->count() - count($belumLengkap))
-                            /
-                            $rules->count()
-                        ) * 100,
-                        2
-                    )
-                    : 0
+                'persentase' => $persentase
             ];
         }
 
-        return view(
-            'monitoring-kelengkapan.index',
-            compact('hasil')
-        );
+        return $hasil;
     }
 }

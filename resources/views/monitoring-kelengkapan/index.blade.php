@@ -13,7 +13,17 @@
             <h3 class="card-title">
                 Monitoring Kelengkapan Administrasi
             </h3>
+            
+            <div class="float-right">
+                <a href="{{ route('monitoring-kelengkapan.pdf') }}"
+                    class="btn btn-danger float-right">
 
+                    <i class="fas fa-file-pdf"></i>
+
+                    Unduh PDF
+
+                </a>
+            </div>
         </div>
 
         <div class="card-body">
