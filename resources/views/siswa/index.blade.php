@@ -28,49 +28,6 @@
             </div>
         </div>
 
-        <div class="card card-outline card-success">
-            <div class="card-header">
-                <h3 class="card-title">
-                    <i class="fas fa-file-excel text-success"></i>
-                    Import Data Siswa
-                </h3>
-            </div>
-
-            <div class="card-body">
-
-                <form action="{{ route('siswa.import', $kelas->id_kelas) }}"
-                    method="POST"
-                    enctype="multipart/form-data">
-
-                    @csrf
-
-                    <div class="row">
-
-                        <div class="col-md-10">
-                            <div class="form-group mb-md-0">
-                                <input type="file"
-                                    name="file_excel"
-                                    class="form-control"
-                                    required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2">
-                            <button type="submit"
-                                class="btn btn-success btn-block">
-
-                                <i class="fas fa-upload"></i>
-                                Import
-                            </button>
-                        </div>
-
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-
         <div class="card">
 
             <div class="card-header">

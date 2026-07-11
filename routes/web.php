@@ -36,8 +36,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('/pengguna', PenggunaController::class);
     Route::resource('/akun', AkunController::class);
     Route::resource('/siswa', SiswaController::class);
-    Route::post('/siswa/import', [SiswaController::class, 'import'])
-        ->name('siswa.import');
     Route::resource('/mapel', MapelController::class);
     Route::resource('/periode', PeriodeController::class);
     Route::resource('/administrasi', AdministrasiController::class);
