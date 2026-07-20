@@ -114,9 +114,6 @@
                             </a>
 
                         </li>
-
-                        @endif
-                        @if($jabatan == 'Admin' || $jabatan == 'Wali Kelas')
                         <li class="nav-item">
 
                             <a href="{{ route('kelas.index') }}"
@@ -142,8 +139,6 @@
                             </a>
 
                         </li>
-
-
                         @endif
 
                         @if($jabatan == 'Wali Kelas')
