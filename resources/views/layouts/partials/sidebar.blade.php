@@ -81,7 +81,7 @@
                             <a href="{{ route('akun.index') }}"
                                class="nav-link {{ request()->routeIs('akun.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-user-cog nav-icon"></i>
 
                                 <p>Kelola Akun</p>
 
@@ -94,7 +94,7 @@
                             <a href="{{ route('pengguna.index') }}"
                                class="nav-link {{ request()->routeIs('pengguna.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-users nav-icon"></i>
 
                                 <p>Pengguna</p>
 
@@ -107,7 +107,7 @@
                             <a href="{{ route('periode.index') }}"
                                class="nav-link {{ request()->routeIs('periode.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-calendar-alt nav-icon"></i>    
 
                                 <p>Periode</p>
 
@@ -119,7 +119,7 @@
                             <a href="{{ route('kelas.index') }}"
                                class="nav-link {{ request()->routeIs('kelas.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-chalkboard nav-icon"></i>  
 
                                 <p>Kelas</p>
 
@@ -132,7 +132,7 @@
                             <a href="{{ route('mapel.index') }}"
                                class="nav-link {{ request()->routeIs('mapel.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-book nav-icon"></i>
 
                                 <p>Mata Pelajaran</p>
 
@@ -147,7 +147,7 @@
                             <a href="{{ route('siswa.index') }}"
                                class="nav-link {{ request()->routeIs('siswa.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-user-graduate nav-icon"></i>
 
                                 <p>Siswa</p>
 
@@ -188,7 +188,7 @@
                             <a href="{{ route('administrasi.index') }}"
                                class="nav-link {{ request()->routeIs('administrasi.index') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-folder-open nav-icon"></i>
 
                                 <p>Data Administrasi</p>
 
@@ -201,7 +201,7 @@
                             <a href="{{ route('cp.index') }}"
                                class="nav-link {{ request()->routeIs('cp.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>    
 
                                 <p>Analisis CP</p>
 
@@ -214,7 +214,7 @@
                             <a href="{{ route('prota.index') }}"
                                class="nav-link {{ request()->routeIs('prota.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>        
 
                                 <p>Program Tahunan</p>
 
@@ -227,7 +227,7 @@
                             <a href="{{ route('prosem.index') }}"
                                class="nav-link {{ request()->routeIs('prosem.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>            
 
                                 <p>Program Semester</p>
 
@@ -240,7 +240,7 @@
                             <a href="{{ route('modul-ajar.index') }}"
                                class="nav-link {{ request()->routeIs('modul-ajar.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>    
 
                                 <p>Modul Ajar</p>
 
@@ -253,7 +253,7 @@
                             <a href="{{ route('jurnal-harian.index') }}"
                                class="nav-link {{ request()->routeIs('modul-ajar.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>        
 
                                 <p>Jurnal Mengajar</p>
 
@@ -292,7 +292,7 @@
                             <a href="{{ route('monitoring.kelengkapan') }}"
                                class="nav-link {{ request()->routeIs('monitoring.kelengkapan') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-chart-bar nav-icon"></i>
 
                                 <p>kelengkapan Administrasi</p>
 
@@ -305,7 +305,7 @@
                             <a href="{{ route('monitoring.cp') }}"
                                class="nav-link {{ request()->routeIs('monitoring.cp') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>
 
                                 <p>Analisis CP</p>
 
@@ -319,7 +319,7 @@
                             <a href="{{ route('monitoring.prota') }}"
                                class="nav-link {{ request()->routeIs('monitoring.prota') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>        
 
                                 <p>Program Tahunan</p>
 
@@ -332,7 +332,7 @@
                             <a href="{{ route('monitoring.prosem') }}"
                                class="nav-link {{ request()->routeIs('monitoring.prosem') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>                
 
                                 <p>Program Semester</p>
 
@@ -345,7 +345,7 @@
                             <a href="{{ route('monitoring.modul-ajar') }}"
                                class="nav-link {{ request()->routeIs('monitoring.modul-ajar') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-file-alt nav-icon"></i>        
 
                                 <p>Modul Ajar</p>
 
@@ -358,7 +358,7 @@
                             <a href="{{ route('rule-administrasi.index') }}"
                             class="nav-link {{ request()->routeIs('rule-administrasi.*') ? 'active' : '' }}">
 
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="fas fa-clipboard-list nav-icon"></i>            
 
                                 <p>Rule Administrasi</p>
 
