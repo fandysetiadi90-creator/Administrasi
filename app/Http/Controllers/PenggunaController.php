@@ -27,10 +27,16 @@ class PenggunaController extends Controller
     {
         $request->validate([
             'email' => 'required|email|unique:pengguna,email',
-            'nama' => 'required',
-            'nomor_induk' => 'required',
+            'nama' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            'nomor_induk' => ['required', 'numeric'],       
             'jabatan' => 'required|in:Admin,Kepala Sekolah,Wali Kelas',
             'poto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            ], [
+                'nama.required' => 'Nama wajib diisi.',
+                'nama.regex' => 'Nama hanya boleh berisi huruf dan spasi.',
+                'nomor_induk.required' => 'Nomor Induk wajib diisi.',
+                'nomor_induk.numeric' => 'Nomor Induk hanya boleh berisi angka.',
+            
         ]);
 
         // CEK JABATAN TIDAK BOLEH DOBEL
@@ -94,10 +100,16 @@ class PenggunaController extends Controller
 
         $request->validate([
             'email' => 'required|email|unique:pengguna,email,' . $id . ',id_pengguna',
-            'nama' => 'required',
-            'nomor_induk' => 'required',
+            'nama' => ['required', 'regex:/^[a-zA-Z\s]+$/'],
+            'nomor_induk' => ['required', 'numeric'],       
             'jabatan' => 'required|in:Admin,Kepala Sekolah,Wali Kelas',
             'poto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
+            ], [
+                'nama.required' => 'Nama wajib diisi.',
+                'nama.regex' => 'Nama hanya boleh berisi huruf dan spasi.',
+                'nomor_induk.required' => 'Nomor Induk wajib diisi.',
+                'nomor_induk.numeric' => 'Nomor Induk hanya boleh berisi angka.',
+                
         ]);
 
         // Admin dan Kepala Sekolah hanya boleh satu

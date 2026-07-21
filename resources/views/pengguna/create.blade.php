@@ -38,6 +38,7 @@
                             <label>Nama</label>
                             <input type="text"
                                 name="nama"
+                                oninput="this.value=this.value.replace(/[^a-zA-Z\s]/g,'')"
                                 class="form-control"
                                 value="{{ old('nama') }}"
                                 placeholder="Masukkan nama lengkap"
@@ -48,6 +49,8 @@
                             <label>Nomor Induk</label>
                             <input type="text"
                                 name="nomor_induk"
+                                inputmode="numeric"
+                                oninput="this.value=this.value.replace(/[^0-9]/g,'')"
                                 class="form-control"
                                 value="{{ old('nomor_induk') }}"
                                 placeholder="Masukkan nomor induk">
