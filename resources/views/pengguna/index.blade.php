@@ -25,7 +25,7 @@
                         <th width="10%">Foto</th>
                         <th>Email</th>
                         <th>Nama</th>
-                        <th>Nomor Induk</th>
+                        <th>NIP</th>    
                         <th>Jabatan</th>
                         <th width="18%">Aksi</th>
                     </tr>
@@ -53,7 +53,7 @@
 
                         <td>{{ $d->email }}</td>
                         <td>{{ $d->nama }}</td>
-                        <td>{{ $d->nomor_induk }}</td>
+                        <td>{{ $d->nomor_induk ?? '-' }}</td>
                         <td>
                             <span class="badge badge-info">
                                 {{ $d->jabatan }}

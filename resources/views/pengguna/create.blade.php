@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Nomor Induk</label>
+                            <label>NIP</label>  
                             <input type="text"
                                 name="nomor_induk"
                                 oninput="this.value=this.value.replace(/[^0-9-]/g,'')"
