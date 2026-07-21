@@ -27,7 +27,7 @@ class PenggunaController extends Controller
     {
         $request->validate([
             'email' => 'required|email|unique:pengguna,email',
-            'nama' => ['required', 'regex:/^[a-zA-Z\s\'.-,]+$/'],
+            'nama' => ['required', 'regex:/^[a-zA-Z\s\'.,-]+$/'],   
             'nomor_induk' => ['required', 'numeric'],       
             'jabatan' => 'required|in:Admin,Kepala Sekolah,Wali Kelas',
             'poto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
@@ -100,7 +100,7 @@ class PenggunaController extends Controller
 
         $request->validate([
             'email' => 'required|email|unique:pengguna,email,' . $id . ',id_pengguna',
-            'nama' => ['required', 'regex:/^[a-zA-Z\s\'.-,]+$/'],
+            'nama' => ['required', 'regex:/^[a-zA-Z\s\'.,-]+$/'],
             'nomor_induk' => ['required', 'numeric'],       
             'jabatan' => 'required|in:Admin,Kepala Sekolah,Wali Kelas',
             'poto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
