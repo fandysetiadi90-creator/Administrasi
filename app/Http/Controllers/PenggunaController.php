@@ -101,13 +101,12 @@ class PenggunaController extends Controller
         $request->validate([
             'email' => 'required|email|unique:pengguna,email,' . $id . ',id_pengguna',
             'nama' => ['required', 'regex:/^[a-zA-Z\s\'.,-]+$/'],
-            'nomor_induk' => ['required', 'regex:/^[0-9-]+$/'],         
+            'nomor_induk' => ['nullable', 'regex:/^[0-9-]+$/'],         
             'jabatan' => 'required|in:Admin,Kepala Sekolah,Wali Kelas',
             'poto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
             ], [
                 'nama.required' => 'Nama wajib diisi.',
                 'nama.regex' => 'Nama hanya boleh berisi huruf, spasi, dan tanda baca.',        
-                'nomor_induk.required' => 'Nomor Induk wajib diisi.',
                 'nomor_induk.regex' => 'Nomor Induk hanya boleh berisi angka dan tanda (-).',   
                 
         ]);
