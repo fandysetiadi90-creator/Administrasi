@@ -57,9 +57,10 @@
                             <label>Nomor Induk</label>
                             <input type="text"
                                 name="nomor_induk"
+                                oninput="this.value=this.value.replace(/[^0-9-]/g,'')"
                                 class="form-control"
                                 value="{{ old('nomor_induk', $pengguna->nomor_induk) }}"
-                                required>
+                                placeholder="Masukkan nomor induk">
                         </div>
 
                         @if(auth()->user()->jabatan == 'Admin')
