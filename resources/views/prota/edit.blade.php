@@ -127,7 +127,7 @@
 
                         <tbody>
 
-                            @foreach($prota->details as $detail)
+                            @foreach($prota->protaDetail as $detail)
 
                             <tr>
 

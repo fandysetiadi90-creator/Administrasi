@@ -111,7 +111,6 @@
                     <input type="number"
                         name="alokasi_per_minggu"
                         class="form-control @error('alokasi_per_minggu') is-invalid @enderror"
-                        value="{{ old('alokasi_per_minggu', 6) }}"
                         min="1"
                         required>
 
