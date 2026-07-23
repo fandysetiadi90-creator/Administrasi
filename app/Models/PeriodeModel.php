@@ -15,4 +15,9 @@ class PeriodeModel extends Model
         'semester',
         'status',
     ];
+
+    public function administrasi()
+    {
+        return $this->hasMany(AdministrasiModel::class, 'id_periode', 'id_periode');
+    }
 }

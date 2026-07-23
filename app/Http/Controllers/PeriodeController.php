@@ -91,14 +91,22 @@ class PeriodeController extends Controller
             ->with('success', 'Data periode berhasil diperbarui');
     }
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
         $periode = PeriodeModel::findOrFail($id);
 
+        // Cek status aktif
+        if ($periode->status == 'Aktif') {
+            return back()->with('error', 'Periode aktif tidak dapat dihapus.');
+        }
+
+        // Cek apakah sudah digunakan administrasi
+        if ($periode->administrasi()->exists()) {
+            return back()->with('error', 'Periode tidak dapat dihapus karena sudah digunakan.');
+        }
+
         $periode->delete();
 
-        return redirect()
-            ->route('periode.index')
-            ->with('success', 'Data periode berhasil dihapus');
+        return back()->with('success', 'Data periode berhasil dihapus.');
     }
 }
