@@ -154,8 +154,10 @@ class ProtaController extends Controller
     public function show(string $id)
     {
         $prota = ProtaModel::with([
-            'administrasi',
-            'protaDetail'
+            'administrasi.mapel',
+            'administrasi.kelas',
+            'administrasi.periode',
+            'protaDetail.atpDetail'
         ])->findOrFail($id);
 
         return view('prota.show', compact('prota'));
@@ -163,14 +165,14 @@ class ProtaController extends Controller
 
     public function edit($id)
     {
-        $prota = ProtaModel::with(
-            'protaDetail'
-        )->findOrFail($id);
+        $prota = ProtaModel::with([
+            'administrasi.mapel',
+            'administrasi.kelas',
+            'administrasi.periode',
+            'protaDetail.atpDetail'
+        ])->findOrFail($id);
 
-        return view(
-            'prota.edit',
-            compact('prota')
-        );
+        return view('prota.edit', compact('prota'));
     }
 
     public function update(Request $request, $id)
@@ -187,17 +189,11 @@ class ProtaController extends Controller
                 ->findOrFail($id);
 
             $prota->update([
-                'id_prota' => $request->id_prota,
                 'status_verifikasi' => 'Menunggu',
-            ]);
-            /*
-        |-------------------------------------------------
-        | Update Header
-        |-------------------------------------------------
-        */
-            $prota->update([
                 'alokasi_per_minggu' => $request->alokasi_per_minggu,
             ]);
+            
+            
 
             /*
         |-------------------------------------------------
